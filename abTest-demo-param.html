@@ -1,27 +1,36 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
-<head>
-  <meta charset="utf-8"> 
-<!--  sampling param start  -->
-  <script type="text/javascript" src="https://absample.baidu.com/static/sampling-param-2.0.js"></script>
-<!--  sampling param end  -->
-  <title>abTest-demo-param</title>
-  <style>
-    .fakeimg {
-        height: 200px;
-         background: #aaa;
-    }
-  </style>
-</head>
-<body>
- 		<!--sampling param start-->
+	<head>
+    		<title>demo</title>
+		<meta charset="utf-8">
+		<!--sampling param start-->
+		<script type="text/javaScript" src="https://absample.baidu.com/static/sampling-param-2.0.js"></script>
+		<!--sampling param end-->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />	
+		<style>
+			.bg-dark,
+			.bg-primary {
+				color: #fff;
+			}
+			main {
+				height: 100%;
+				text-align: center;
+			}
+			h3 {
+				padding: 20px 0;
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--sampling param start-->
 		<script>
 		    if (window.bdABTest) {
 			// 当前预览环境支持抽样
 			bdABTest.sampling({
 			    sample: 0.6, // 命中抽样的概率，需要用户修改
 			    groupNum:2,  // 实验组和对照组的个数总和，需要用户修改
-			    endTime: 1546756653791, // 实验的结束时间，需要用户修改
+			    endTime:1546756653791, // 实验的结束时间，需要用户修改
 			    success: function (rs) {
 				// 以下为用户配置代码
 				// 返回格式如下：
@@ -31,10 +40,10 @@
 					$.each(rs, function (key, item) {
 						if (item == 'T1') {
 							// 实验组1
-							$('#testz').show();
+							$('#test').show();
 						} else if (item == 'C1') {
 							// 对照组1
-							$('#controlz').show();
+							$('#control').show();
 						} else {
 							$('#original').show();
 						}
@@ -51,56 +60,55 @@
 		    }
 		</script>
 		<!--sampling param end-->	
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>ABTest传参实验</h1>
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">网站名</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">主页</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="row">
-    <!-- 原始组内容 -->
-    <div class="col-sm-4" id="original" style="display: none;">
-      <h2>原始组</h2>
-      <div class="fakeimg">原始组内容</div>
-    </div>
-    <div class="col-sm-8">
-    <!-- 实验组显示内容 -->
-      <div class="col-sm-8 test" id="testz" style="display: none;">
-      <h2>实验组</h2>
-      <div class="fakeimg">实验组内容</div>
-      </div>
-      <!-- 对照组显示内容 -->
-      <div class="col-sm-8 control" id="controlz" style="display: none;">
-      <h2>对照组</h2>
-      <div class="fakeimg">对照组内容</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>底部内容</p>
-</div>
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
+		<div id="original" class="bg-dark" style="display: none;">
+			<div class="">
+			      <header class="masthead bg-dark">
+				<div class="inner">
+				  <h3 class="masthead-brand">Demo</h3>
+				</div>
+			      </header>
+			      <main role="main" class="inner cover bg-dark">
+				<h1 class="cover-heading">Demo</h1>
+				<p class="lead">This is a Demo for sampling-param!</p>
+			      </main>
+			</div>
+		</div>
+		<div id="test" class="bg-primary" style="display: none;">
+			<div class="">
+			      <header class="masthead bg-primary">
+				<div class="inner">
+				  <h3 class="masthead-brand">Demo</h3>
+				</div>
+			      </header>
+			      <main role="main" class="inner cover bg-primary">
+				<h1 class="cover-heading">Demo</h1>
+				<p class="lead">This is a Demo for sampling-param!</p>
+			      </main>
+			</div>
+		</div>
+		<div id="control" class="bg-light" style="display: none;">
+			<div class="">
+			      <header class="masthead bg-light">
+				<div class="inner">
+				  <h3 class="masthead-brand">Demo</h3>
+				</div>
+			      </header>
+			      <main role="main" class="inner cover bg-light">
+				<h1 class="cover-heading">Demo</h1>
+				<p class="lead">This is a Demo for sampling-param!</p>
+			      </main>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function () {
+				var winHeight = window.screen.height;
+				$('#control').height(winHeight);
+				$('#test').height(winHeight);
+				$('#original').height(winHeight);
+			});
+		</script>
+	</body>
 </html>
