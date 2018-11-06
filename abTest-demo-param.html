@@ -2,7 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8"> 
-  <title>Bootstrap 实例 - 一个简单的网页</title>
+<!--  sampling param start  -->
+  <script type="text/javascript" src="https://absample.baidu.com/static/sampling-param-2.0.js"></script>
+<!--  sampling param end  -->
+  <title>abTest-demo-param</title>
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,6 +17,44 @@
   </style>
 </head>
 <body>
+ 		<!--sampling param start-->
+		<script>
+		    if (window.bdABTest) {
+			// 当前预览环境支持抽样
+			bdABTest.sampling({
+			    sample: 0.9, // 命中抽样的概率，需要用户修改
+			    groupNum:2,  // 实验组和对照组的个数总和，需要用户修改
+			    endTime: 1546756653791, // 实验的结束时间，需要用户修改
+			    success: function (rs) {
+				// 以下为用户配置代码
+				// 返回格式如下：
+				// 例如：{"176":"C1"}，其中key为实验编号，value表示实验组/对照组，其中C1表示对照组第一个，T1表示实验组第一个，以此类推
+				// 用户需要根据返回的数据配置页面显示实验组还是对照组	
+				if (rs) {
+					$.each(rs, function (key, item) {
+						if (item == 'T1') {
+							// 实验组1
+							$('#testz').show();
+						} else if (item == 'C1') {
+							// 对照组1
+							$('#controlz').show();
+						} else {
+							$('#original').show();
+						}
+					});
+				} else {
+					// 没有返回
+			    	}
+			    }
+			});
+		    } else {
+			// 当前浏览环境不支持抽样
+			console.log("no sampling");
+			$('#original').show();
+		    }
+		</script>
+		<!--sampling param end-->	
+
 <div class="jumbotron text-center" style="margin-bottom:0">
   <h1>ABTest传参实验</h1>
 </div>
@@ -39,18 +80,18 @@
 <div class="container">
   <div class="row">
     <!-- 原始组内容 -->
-    <div class="col-sm-4">
+    <div class="col-sm-4" id="original" style="display: none;">
       <h2>原始组</h2>
       <div class="fakeimg">原始组内容</div>
     </div>
     <div class="col-sm-8">
     <!-- 实验组显示内容 -->
-      <div class="col-sm-8 test">
+      <div class="col-sm-8 test" id="testz" style="display: none;">
       <h2>实验组</h2>
       <div class="fakeimg">实验组内容</div>
       </div>
       <!-- 对照组显示内容 -->
-      <div class="col-sm-8 control">
+      <div class="col-sm-8 control" id="controlz" style="display: none;">
       <h2>对照组</h2>
       <div class="fakeimg">对照组内容</div>
       </div>
@@ -61,5 +102,6 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
   <p>底部内容</p>
 </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </body>
 </html>
