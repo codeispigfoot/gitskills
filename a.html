@@ -61,5 +61,21 @@
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    var baiduAB = baiduAB || {};
+    window.baiduAB = baiduAB;
+    (function(){
+        baiduAB.endTime = 1552727493562;
+        baiduAB.date = new Date();
+        baiduAB.time = baiduAB.date.getTime();
+        if (baiduAB.time <= baiduAB.endTime) {
+            baiduAB.newScript = document.createElement("script");
+            baiduAB.newScript.setAttribute("charset", "utf-8");
+            baiduAB.newScript.src = "https://zz.bdstatic.com/abtest/abtest-zy-pctl.js";
+            baiduAB.first = document.body.firstChild;
+            document.body.insertBefore(baiduAB.newScript, baiduAB.first);
+        };
+    })();
+</script>
 </body>
 </html>
